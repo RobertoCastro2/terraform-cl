@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package processor;
+
+// Mensagem de temperatura (mesma estrutura do serviço de sensor)
+message Temperature {
+  string sensor_id = 1;
+  double value      = 2;
+  int64  timestamp  = 3;
+}
+
+// Mensagem de dado processado com média
+message ProcessedData {
+  string sensor_id = 1;
+  double average   = 2;
+  int64  timestamp = 3;  // epoch em milissegundos
+}
+
+// Serviço de processamento de leituras de temperatura
+service Processor {
+  // Recebe stream de Temperature e retorna stream de ProcessedData
+  rpc ProcessReadings(stream Temperature) returns (stream ProcessedData);
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package actuator;
+
+// Mensagem de comando de atuação baseada em média de temperatura
+message ActuationCommand {
+  string sensor_id = 1;
+  double average   = 2;
+  int64  timestamp = 3; // epoch em milissegundos
+  bool   turn_on   = 4; // true = ligar, false = desligar
+}
+
+// Serviço de Atuação
+service Actuator {
+  // Recebe stream de ProcessedData (média) e retorna confirmações
+  rpc Execute(stream ActuationCommand) returns (stream ActuationCommand);
+}

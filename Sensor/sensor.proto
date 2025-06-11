@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package sensor;
+
+// Serviço de streaming de leituras de temperatura
+service Sensor {
+  // Client envia um sensor_id e recebe um stream de leituras
+  rpc StreamReadings(ReadingRequest) returns (stream Temperature);
+}
+
+// Mensagem de requisição com ID do sensor
+message ReadingRequest {
+  string sensor_id = 1;
+}
+
+// Mensagem de temperatura retornada
+message Temperature {
+  string sensor_id = 1;
+  double value      = 2;
+  int64  timestamp  = 3; // epoch em milissegundos
+}
