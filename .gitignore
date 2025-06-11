@@ -1,0 +1,42 @@
+# Ambiente virtual Python
+venv/
+.venv/
+
+# Bytecode Python e caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Arquivos de configuração de ambiente
+.env
+.env.*.local
+
+# Distribuição / packaging Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Logs
+*.log
+
+# Editor/IDE
+.vscode/
+.idea/
+*.iml
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Docker Compose overrides (caso existam localmente)
+docker-compose.override.yml
+tfplan
+
+# Outros
+*.swp
+.*.sw?
+
+# Terraform local state e provider binaries
+.terraform/
+Terraform/.terraform/
